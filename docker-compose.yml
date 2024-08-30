@@ -1,0 +1,16 @@
+services:
+  ems_dev:
+    image: postgres:latest
+    container_name: ems_dev_db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DEV_DB_USER}
+      - POSTGRES_PASSWORD=${DEV_DB_PASSWORD}
+      - POSTGRES_DB=${DEV_DB_NAME}
+    volumes:
+      - ems_dev_db_data:/var/lib/postgresql/data
+    ports:
+      - '${DEV_DB_PORT}:5432'
+
+volumes:
+  ems_dev_db_data:
